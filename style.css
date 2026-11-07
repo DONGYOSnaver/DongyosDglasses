@@ -1,0 +1,610 @@
+:root {
+  --bg: #fff;
+  --gray-bg: #f5f5f7;
+  --text: #1d1d1f;
+  --text-sub: #6e6e73;
+  --blue: #0071e3;
+  --blue-hover: #0077ed;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Apple SD Gothic Neo", "Pretendard", "Malgun Gothic", "Segoe UI", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* 내비게이션 */
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 48px;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  transition: box-shadow .3s;
+}
+
+.nav.scrolled {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.nav-inner {
+  max-width: 980px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+}
+
+.nav-links a {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.8);
+  transition: color .2s;
+}
+
+.nav-links a:hover {
+  color: #000;
+}
+
+/* 로고 + 메뉴 버튼 (로그인 시에만 표시) */
+.nav-left {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menu-btn {
+  display: none;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: background .2s;
+}
+
+body.logged-in .menu-btn {
+  display: flex;
+}
+
+.menu-btn:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.menu-btn span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--text);
+  transition: transform .25s, opacity .25s;
+}
+
+/* 열렸을 때 삼선 → X */
+.menu-btn[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-btn[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-btn[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* 메뉴창 */
+.menu-panel {
+  display: none;
+  position: absolute;
+  top: 44px;
+  left: 0;
+  min-width: 190px;
+  padding: 8px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+body.logged-in .menu-panel.open {
+  display: block;
+}
+
+.menu-panel a,
+.menu-panel button {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  text-align: left;
+  color: var(--text);
+  cursor: pointer;
+  transition: background .2s;
+}
+
+.menu-panel a:hover,
+.menu-panel button:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* 메뉴창 맨 위: 사용자 이름 */
+.menu-panel li.menu-user {
+  margin-bottom: 6px;
+  padding: 10px 14px 12px;
+  border-bottom: 1px solid #e8e8ed;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.menu-panel li:last-child {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid #e8e8ed;
+}
+
+/* 히어로 */
+.hero {
+  padding: 140px 22px 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+.eyebrow {
+  font-size: 21px;
+  font-weight: 600;
+  color: #bf4800;
+  margin-bottom: 8px;
+}
+
+.hero-title {
+  font-size: clamp(40px, 7vw, 80px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+}
+
+.hero-sub {
+  font-size: clamp(19px, 2.4vw, 26px);
+  color: var(--text-sub);
+  margin-top: 18px;
+}
+
+.hero-actions {
+  margin-top: 30px;
+  display: flex;
+  gap: 28px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 980px;
+  font-size: 17px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background .2s, transform .15s;
+}
+
+.btn-primary {
+  background: var(--blue);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--blue-hover);
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+.link-arrow {
+  font-size: 19px;
+  color: var(--blue);
+}
+
+.link-arrow:hover {
+  text-decoration: underline;
+}
+
+/* 맥 윈도우 */
+.mac-window {
+  width: min(860px, 100%);
+  margin: 64px auto 0;
+  background: #fff;
+  border-radius: 14px 14px 0 0;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  text-align: left;
+}
+
+.mac-bar {
+  height: 40px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f1f1f4;
+  border-bottom: 1px solid #e3e3e6;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.dot.red {
+  background: #ff5f57;
+}
+
+.dot.yellow {
+  background: #febc2e;
+}
+
+.dot.green {
+  background: #28c840;
+}
+
+.mac-body {
+  display: flex;
+  min-height: 340px; /* 변경: height 고정 → min-height (이미지 크기에 맞춰 늘어남) */
+}
+
+.mac-sidebar {
+  width: 180px;
+  padding: 20px 16px;
+  background: #f7f7f9;
+  border-right: 1px solid #ececef;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.mac-sidebar span {
+  height: 12px;
+  border-radius: 6px;
+  background: #e2e2e7;
+}
+
+.mac-sidebar span:nth-child(1) {
+  width: 80%;
+  background: #cfe3ff;
+}
+
+.mac-sidebar span:nth-child(2) {
+  width: 60%;
+}
+
+.mac-sidebar span:nth-child(3) {
+  width: 70%;
+}
+
+.mac-sidebar span:nth-child(4) {
+  width: 50%;
+}
+
+.mac-main {
+  flex: 1;
+  min-width: 0;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr; /* 변경: 큰 카드는 이미지 높이만큼 자동 */
+  gap: 16px;
+}
+
+.mac-card {
+  min-height: 90px; /* 추가: 작은 카드 최소 높이 */
+  border-radius: 14px;
+  background: linear-gradient(135deg, #e9ecf5, #f5f6fa);
+}
+
+.mac-card.big {
+  grid-column: span 2;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0a84ff, #bf5af2);
+}
+
+/* 추가: 이미지를 원본 비율 그대로 전체 표시 */
+.mac-card.big img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* 공통 섹션 */
+.section {
+  padding: 120px 22px;
+  text-align: center;
+}
+
+.section.dark {
+  background: #000;
+  color: #f5f5f7;
+}
+
+.section.gray {
+  background: var(--gray-bg);
+}
+
+.section-title {
+  font-size: clamp(34px, 5.5vw, 64px);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+
+.section-sub {
+  margin-top: 16px;
+  font-size: clamp(19px, 2.2vw, 24px);
+  color: var(--text-sub);
+}
+
+.dark .section-sub {
+  color: #a1a1a6;
+}
+
+.grad {
+  background: linear-gradient(90deg, #ff9f0a, #ff375f, #bf5af2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 기능 카드 */
+.grid {
+  max-width: 1020px;
+  margin: 64px auto 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  padding: 44px 30px;
+  border-radius: 24px;
+  background: #1d1d1f;
+  transition: transform .4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.stat {
+  display: inline-block;
+  font-size: 80px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  background: linear-gradient(135deg, #64d2ff, #0a84ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.stat-unit {
+  margin-top: 8px;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.card p {
+  margin-top: 14px;
+  font-size: 15px;
+  color: #a1a1a6;
+}
+
+/* 컬러 선택 */
+.device {
+  width: min(520px, 86%);
+  aspect-ratio: 16 / 10;
+  margin: 56px auto 0;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #2b2d42, #4a4e69);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+  transition: background .6s ease;
+}
+
+.color-name {
+  margin-top: 28px;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.swatches {
+  margin-top: 18px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.swatch:hover {
+  transform: scale(1.12);
+}
+
+.swatch.active {
+  box-shadow: 0 0 0 2px var(--blue);
+}
+
+/* 사양 */
+.specs {
+  max-width: 720px;
+  margin: 56px auto 0;
+  background: #fff;
+  border-radius: 24px;
+  padding: 12px 36px;
+  text-align: left;
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 0;
+  border-bottom: 1px solid #e8e8ed;
+  font-size: 17px;
+}
+
+.spec-row:last-child {
+  border-bottom: none;
+}
+
+.spec-row span {
+  color: var(--text-sub);
+}
+
+.section.center .btn {
+  margin-top: 32px;
+}
+
+/* 구입하기: 로그인 필요 경고문 */
+.buy-warning {
+  min-height: 1.4em;
+  margin-top: 16px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ff6b6b;
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+
+.buy-warning.show {
+  opacity: 1;
+}
+
+/* 푸터 */
+.footer {
+  padding: 28px 22px;
+  background: var(--gray-bg);
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-sub);
+}
+
+/* 토스트 */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 40px;
+  transform: translate(-50%, 30px);
+  padding: 14px 26px;
+  border-radius: 980px;
+  background: rgba(30, 30, 32, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: #fff;
+  font-size: 15px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .35s, transform .35s;
+  z-index: 200;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* 스크롤 등장 애니메이션 */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .9s cubic-bezier(0.22, 1, 0.36, 1), transform .9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 640px) {
+  .nav-links {
+    gap: 16px;
+  }
+  .section {
+    padding: 80px 22px;
+  }
+  .mac-sidebar {
+    display: none;
+  }
+  .mac-body {
+    min-height: 240px; /* 변경: height → min-height */
+  }
+  .specs {
+    padding: 8px 22px;
+  }
+  .spec-row {
+    flex-direction: column;
+    gap: 4px;
+  }
+}

@@ -1,0 +1,197 @@
+/* ===== 로그인 버튼 & 로그인 창 스타일 ===== */
+
+/* 로그인/구입 버튼 배치 */
+.hero-actions,
+.buy-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-login {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 980px;
+  border: 1.5px solid currentColor;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.btn-login:hover {
+  background: rgba(128, 128, 128, 0.18);
+  transform: translateY(-1px);
+}
+
+/* 오버레이 */
+.login-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s, visibility 0.25s;
+}
+.login-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 모달 */
+.login-modal {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  padding: 40px 32px 32px;
+  border-radius: 20px;
+  background: #fff;
+  color: #1d1d1f;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  transform: translateY(16px) scale(0.97);
+  transition: transform 0.25s;
+  text-align: left;
+}
+.login-overlay.open .login-modal {
+  transform: translateY(0) scale(1);
+}
+
+.login-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 50%;
+  background: #f2f2f4;
+  color: #555;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+.login-close:hover {
+  background: #e4e4e8;
+}
+
+.login-modal h3 {
+  margin: 0 0 6px;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.login-modal .login-desc {
+  margin: 0 0 24px;
+  color: #86868b;
+  font-size: 14px;
+}
+
+/* 입력창 */
+.login-field {
+  margin-bottom: 14px;
+}
+.login-field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+}
+.login-field input[type="email"],
+.login-field input[type="password"],
+.login-field input[type="text"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 14px;
+  border: 1.5px solid #d2d2d7;
+  border-radius: 12px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.login-field input:focus {
+  border-color: #0a84ff;
+  box-shadow: 0 0 0 4px rgba(10, 132, 255, 0.15);
+}
+
+/* 옵션 / 버튼 / 메시지 */
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 4px 0 20px;
+  font-size: 13px;
+  color: #555;
+}
+.login-options a {
+  color: #0a84ff;
+  text-decoration: none;
+}
+.login-options a:hover {
+  text-decoration: underline;
+}
+
+.login-submit {
+  width: 100%;
+  padding: 14px;
+  border: 0;
+  border-radius: 12px;
+  background: #0a84ff;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.login-submit:hover {
+  background: #0071e3;
+}
+
+.login-error {
+  min-height: 18px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  color: #e5484d;
+}
+
+.login-footer {
+  margin: 20px 0 0;
+  text-align: center;
+  font-size: 13px;
+  color: #86868b;
+}
+.login-footer a {
+  color: #0a84ff;
+  text-decoration: none;
+}
+
+/* 로그인 성공 화면 */
+.login-success {
+  display: none;
+  text-align: center;
+  padding: 20px 0 8px;
+}
+.login-success .check {
+  font-size: 44px;
+  color: #30d158;
+}
+.login-modal.done form,
+.login-modal.done h3,
+.login-modal.done .login-desc,
+.login-modal.done .login-footer {
+  display: none;
+}
+.login-modal.done .login-success {
+  display: block;
+}

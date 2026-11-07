@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DỘNGYỘS — 새로운 경험의 시작</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="login/login.css" />
+    <!-- 장바구니 스타일 -->
+    <link rel="stylesheet" href="basket/basket.css" />
+  </head>
+  <body>
+    <nav class="nav" id="nav">
+      <div class="nav-inner">
+        <div class="nav-left">
+          <!-- 로그인했을 때만 보이는 메뉴 버튼 (삼선) -->
+          <button
+            type="button"
+            class="menu-btn"
+            id="menuBtn"
+            aria-label="메뉴 열기"
+            aria-expanded="false"
+            aria-controls="menuPanel"
+          >
+            <span></span><span></span><span></span>
+          </button>
+          <a href="#" class="logo">DỘNGYỘS</a>
+
+          <div class="menu-panel" id="menuPanel">
+            <ul>
+              <!-- 로그인한 사용자 이름 (script.js가 채워줍니다) -->
+              <li class="menu-user" id="menuUser"></li>
+              <li><a href="#features">소개 😀</a></li>
+              <li><a href="#" id="menuCart">장바구니 🛒</a></li>
+              <li>
+                <button type="button" id="menuLogout">로그아웃</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#features">기능</a></li>
+          <li><a href="#colors">컬러</a></li>
+          <li><a href="#specs">사양</a></li>
+          <li><a href="#buy">구입하기</a></li>
+          <li><a href="#" id="authLink" class="js-open-login">로그인</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <p class="eyebrow reveal">새로운 DONGYOS studio</p>
+      <h1 class="hero-title reveal">
+        생각보다 빠르게.<br />상상보다 아름답게.
+      </h1>
+      <p class="hero-sub reveal">
+        모든 것을 새롭게 설계한 가장 강력한 작업 공간.
+      </p>
+      <div class="hero-actions reveal">
+        <a href="#buy" class="btn btn-primary">구입하기</a>
+        <a href="#features" class="link-arrow">더 알아보기 ›</a>
+      </div>
+
+      <div class="mac-window reveal" id="macWindow">
+        <div class="mac-bar">
+          <span class="dot red"></span><span class="dot yellow"></span
+          ><span class="dot green"></span>
+        </div>
+        <div class="mac-body">
+          <div class="mac-sidebar">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="mac-main">
+            <div class="mac-card big">
+              <img
+                src="https://image.edaily.co.kr/images/photo/files/NP/S/2025/09/PS25091800613.gif"
+                alt="메인 이미지"
+              />
+            </div>
+            <div class="mac-card"></div>
+            <div class="mac-card"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="section dark" id="features">
+      <h2 class="section-title reveal">
+        강력한 성능.<br /><span class="grad">놀라운 효율.</span>
+      </h2>
+      <p class="section-sub reveal">작업 속도는 2배, 배터리는 하루 종일.</p>
+      <div class="grid">
+        <div class="card reveal">
+          <div class="stat" data-count="2">0</div>
+          <div class="stat-unit">배 더 빠른 속도</div>
+          <p>새로운 칩이 가장 무거운 작업도 부드럽게 처리합니다.</p>
+        </div>
+        <div class="card reveal">
+          <div class="stat" data-count="24">0</div>
+          <div class="stat-unit">시간 배터리</div>
+          <p>충전기 없이도 하루 종일 몰입할 수 있습니다.</p>
+        </div>
+        <div class="card reveal">
+          <div class="stat" data-count="99">0</div>
+          <div class="stat-unit">% 재활용 소재</div>
+          <p>지구를 생각해 알루미늄을 다시 쓰고 줄였습니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="colors">
+      <h2 class="section-title reveal">나만의 색을 고르세요.</h2>
+      <p class="section-sub reveal">마음에 드는 컬러를 눌러보세요.</p>
+      <div class="device reveal" id="device"></div>
+      <p class="color-name" id="colorName">미드나이트</p>
+      <div class="swatches reveal">
+        <button
+          class="swatch active"
+          data-name="미드나이트"
+          data-from="#2b2d42"
+          data-to="#4a4e69"
+          style="background: #2b2d42"
+          aria-label="미드나이트"
+        ></button>
+        <button
+          class="swatch"
+          data-name="스타라이트"
+          data-from="#e8dcc8"
+          data-to="#f6efe3"
+          style="background: #e8dcc8"
+          aria-label="스타라이트"
+        ></button>
+        <button
+          class="swatch"
+          data-name="블루"
+          data-from="#0a84ff"
+          data-to="#64d2ff"
+          style="background: #0a84ff"
+          aria-label="블루"
+        ></button>
+        <button
+          class="swatch"
+          data-name="핑크"
+          data-from="#ff6b9d"
+          data-to="#ffb3c7"
+          style="background: #ff6b9d"
+          aria-label="핑크"
+        ></button>
+      </div>
+    </section>
+
+    <section class="section gray" id="specs">
+      <h2 class="section-title reveal">한눈에 보는 사양</h2>
+      <div class="specs reveal">
+        <div class="spec-row">
+          <span>디스플레이</span><strong>14.2형 Liquid 디스플레이</strong>
+        </div>
+        <div class="spec-row"><span>칩</span><strong>Dgs D2 Pro</strong></div>
+        <div class="spec-row">
+          <span>메모리</span><strong>최대 32GB</strong>
+        </div>
+        <div class="spec-row">
+          <span>저장 공간</span><strong>최대 2TB SSD</strong>
+        </div>
+        <div class="spec-row"><span>무게</span><strong>100g</strong></div>
+      </div>
+    </section>
+
+    <section class="section dark center" id="buy">
+      <h2 class="section-title reveal">지금 만나보세요.</h2>
+      <p class="section-sub reveal">₩1,000,000부터</p>
+      <div class="reveal buy-actions">
+        <button class="btn btn-primary" id="buyBtn">구입하기</button>
+      </div>
+      <!-- 로그인하지 않고 구입하기를 누르면 표시되는 경고문 -->
+      <p class="buy-warning" id="buyWarning" role="alert"></p>
+    </section>
+
+    <footer class="footer">
+      <p>
+        TEL. 010-1234-5678(代) | FAX. 010-1234-5678 | E-mail. hello@dongyos.com
+      </p>
+      <p>Copyright © DONGYOS.Co.,Ltd. All Rights Reserved.</p>
+    </footer>
+
+    <div class="toast" id="toast">장바구니에 담았습니다 ✓</div>
+
+    <script src="script.js"></script>
+    <!-- 로그인 창 스크립트 -->
+    <script src="login/login.js"></script>
+    <!-- 장바구니 창 스크립트 -->
+    <script src="basket/basket.js"></script>
+  </body>
+</html>

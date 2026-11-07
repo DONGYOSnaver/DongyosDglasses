@@ -1,0 +1,40 @@
+<!-- 장바구니 창 (basket/basket.js가 불러와서 index.html의 body 끝에 삽입합니다) -->
+<div
+  class="basket-overlay"
+  id="basketOverlay"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="basketTitle"
+>
+  <div class="basket-modal" id="basketModal">
+    <button type="button" class="basket-close" id="basketClose" aria-label="닫기">✕</button>
+    <h3 id="basketTitle">장바구니 🛒</h3>
+    <p class="basket-desc">담긴 상품을 확인하고 결제를 진행하세요.</p>
+
+    <!-- 상품 목록 (처음에는 비어있음) -->
+    <div class="basket-items" id="basketItems">
+      <div class="basket-empty">장바구니가 비어 있습니다.</div>
+    </div>
+
+    <!-- 추가하기 버튼 영역 -->
+    <button type="button" class="basket-add-btn" id="basketAddBtn">+ 상품 추가하기</button>
+
+    <!-- 하단 결제 영역 -->
+    <div class="basket-footer" id="basketFooter">
+      <div class="basket-total-row">
+        <span>총 결제금액</span>
+        <strong id="basketTotalPrice">₩0</strong>
+      </div>
+      <!-- 에러 메세지 출력 영역 -->
+      <p class="basket-error" id="basketError" role="alert"></p>
+      <button type="button" class="basket-submit" id="basketCheckoutBtn">결제하기</button>
+    </div>
+
+    <!-- 결제 완료 화면 -->
+    <div class="basket-success" id="basketSuccess">
+      <div class="check">✓</div>
+      <h4 style="margin: 10px 0 4px">주문이 완료되었습니다!</h4>
+      <p style="color: #86868b; font-size: 14px; margin: 0">이용해 주셔서 감사합니다.</p>
+    </div>
+  </div>
+</div>
